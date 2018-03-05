@@ -4,7 +4,9 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import { TabViewAnimated, TabBar, TabViewPagerExperimental } from 'react-native-tab-view';
+import * as GestureHandler from 'react-native-gesture-handler';
+
 
 import List from './List';
 
@@ -37,6 +39,8 @@ export default class TabViewExample extends React.Component {
     }
   };
 
+  renderPager = () => <TabViewPagerExperimental {...props} GestureHandler={GestureHandler} />
+
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -44,6 +48,7 @@ export default class TabViewExample extends React.Component {
           style={{ flex: 1 }}
           navigationState={this.state}
           renderScene={this.renderScene}
+          renderPager={this.renderPager}
           renderHeader={this.renderHeader}
           onIndexChange={this.handleIndexChange}
           initialLayout={initialLayout}
